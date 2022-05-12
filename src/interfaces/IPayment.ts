@@ -5,7 +5,7 @@ export interface IPayment{
     cvc:string;
     expiry:string;
     type:string;
-    total:string;
+    total:number;
     date:Date;
 }
 

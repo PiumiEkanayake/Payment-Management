@@ -30,7 +30,7 @@ const PaymentSchema = new Schema(
             trim:true,
         },
         total:{
-            type:String,
+            type:Number,
             required:false,
             trim:true,
         },
