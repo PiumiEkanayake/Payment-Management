@@ -22,8 +22,15 @@ spec:
       containers:
         - name: payment-management
           image: it19170244/payment-management:latest
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
           ports:
-            - containerPort: 3004
+            - containerPort: 3005
           envFrom:
             - configMapRef:
                 name: payment-management-config
