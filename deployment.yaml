@@ -1,0 +1,31 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ctse
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-management-deployment
+  namespace: ctse
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payment-management
+  template:
+    metadata:
+      labels:
+        app: payment-management
+    spec:
+      containers:
+        - name: payment-management
+          image: it19170244/payment-management:latest
+          ports:
+            - containerPort: 3004
+          envFrom:
+            - configMapRef:
+                name: payment-management-config
+---
+
