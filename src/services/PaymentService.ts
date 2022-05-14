@@ -38,7 +38,7 @@ export class PaymentService implements IPaymentService{
         return {status:"Fail",message:"Card number is invalid"};
     }
     request.type=validate.card.niceType;
-    
+
      return await this.PaymentDao.save(request)
             .then(data=>{
                 return data;
@@ -70,19 +70,6 @@ export class PaymentService implements IPaymentService{
                 throw error;
             })
     }
-
-    public async getProductsByPayment(name:string):Promise<IPayment | Object>{
-        this.logger.info("Payment Services - getProductsByPayment()");
-        return await this.PaymentDao.getProductsByPayment(name)
-            .then(data=>{
-                return data;
-            })
-            .catch(error=>{
-                this.logger.error(error.message);
-                throw error;
-            })
-    }
-   
 
 
     public async updatePayment(id:String,Payment:IPayment):Promise<IPayment | Object>{
